@@ -43,6 +43,13 @@ class ViewController: UIViewController {
         
         TipLabel.text = numberFormatter.string(from: NSNumber(value: tip))
         TotalLabel.text = numberFormatter.string(from: NSNumber(value: total))
+        
+        // Set an Integer value for some key.
+        UserDefaults.standard.set(TipControl.selectedSegmentIndex, forKey: "defaultSegmentChosed")
+        
+        // Force UserDefaults to save.
+        UserDefaults.standard.synchronize()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

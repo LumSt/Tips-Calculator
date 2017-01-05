@@ -16,6 +16,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let segmentWasChosed = UserDefaults.standard.integer(forKey: "defaultSegmentChosed")
+        defaultTipControl.selectedSegmentIndex = segmentWasChosed
         // Do any additional setup after loading the view.
     }
     
@@ -23,8 +25,7 @@ class SettingsViewController: UIViewController {
         super.viewWillDisappear(animated)
         print("SettingsViewController will appear")
         
-        let segmentWasChosed = UserDefaults.standard.integer(forKey: "defaultSegmentChosed")
-        defaultTipControl.selectedSegmentIndex = segmentWasChosed
+        
 
     }
 
