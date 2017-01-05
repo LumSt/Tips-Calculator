@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.BillField.becomeFirstResponder()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -38,8 +38,11 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentage[TipControl.selectedSegmentIndex]
         let total = tip + bill
         
-        TipLabel.text = String(format: "$%.2f", tip)
-        TotalLabel.text = String(format: "$%.2f", total)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        
+        TipLabel.text = numberFormatter.string(from: NSNumber(value: tip))
+        TotalLabel.text = numberFormatter.string(from: NSNumber(value: total))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,9 +56,11 @@ class ViewController: UIViewController {
         let tip = bill * tipValue
         let total = bill + tip
         
-        TipLabel.text = String(format: "$%.2f", tip)
-        TotalLabel.text = String(format: "$%.2f", total)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
         
+        TipLabel.text = numberFormatter.string(from: NSNumber(value: tip))
+        TotalLabel.text = numberFormatter.string(from: NSNumber(value: total))
         
         switch tipValue {
         case 0.15:
